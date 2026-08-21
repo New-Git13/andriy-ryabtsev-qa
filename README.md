@@ -1,15 +1,12 @@
-# Andriy Ryabtsev — Resume Website
+# Andriy Ryabtsev — Resume Website v2
 
-Static one-page resume website created for the Halo Lab QA vacancy.
+This version keeps the Version 1 visual language and adds the profile/cover header.
 
-## Files
-- `index.html` — complete responsive website
-- `QA-CV-Andriy-Ryabtsev.pdf` — PDF CV linked from the website
+Files:
+- index.html
+- cover-concept.png
+- profile-photo.png
+- QA-CV-Andriy-Ryabtsev.pdf
 
-## Publish
-The folder can be deployed as-is to any static host, including GitHub Pages, Netlify, Vercel, Cloudflare Pages, or similar.
-
+Before publishing, replace the placeholder LinkedIn and Telegram href values in index.html.
 No build step is required.
-
-## Important
-Replace the placeholder LinkedIn and Telegram URLs in `index.html` with the candidate's actual profile links before publishing.

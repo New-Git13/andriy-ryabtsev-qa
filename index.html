@@ -1,373 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Andriy Ryabtsev — Manual QA Engineer. Web and mobile testing, API testing, SQL, test design, Jira, TestRail, AI/ML fundamentals." />
-  <title>Andriy Ryabtsev — Manual QA Engineer</title>
-  <style>
-    :root {
-      --bg: #f7f7f4;
-      --surface: #ffffff;
-      --text: #171717;
-      --muted: #686868;
-      --line: #deded8;
-      --accent: #151515;
-      --soft: #ecece7;
-      --max: 1120px;
-      --radius: 18px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-
-    header {
-      padding: 24px 0;
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-      background: rgba(247,247,244,.9);
-      backdrop-filter: blur(12px);
-      z-index: 10;
-    }
-    nav { display:flex; justify-content:space-between; align-items:center; gap:24px; }
-    .brand { font-weight: 800; letter-spacing: -.03em; }
-    .navlinks { display:flex; gap:22px; color:var(--muted); font-size:.92rem; }
-    .navlinks a:hover { color:var(--text); }
-
-    main { padding-bottom: 80px; }
-    .hero {
-      min-height: 72vh;
-      display:grid;
-      align-items:center;
-      grid-template-columns: 1.45fr .75fr;
-      gap:70px;
-      padding: 90px 0 70px;
-    }
-    .eyebrow {
-      display:inline-flex; gap:8px; align-items:center;
-      font-size:.82rem; text-transform:uppercase; letter-spacing:.12em;
-      color:var(--muted); font-weight:700;
-      margin-bottom:18px;
-    }
-    .dot { width:8px; height:8px; background:#171717; border-radius:50%; display:inline-block; }
-    h1 {
-      font-size: clamp(3.3rem, 8vw, 6.8rem);
-      line-height: .92;
-      letter-spacing: -.075em;
-      margin: 0 0 28px;
-      max-width: 850px;
-    }
-    .hero p {
-      max-width: 720px;
-      font-size: clamp(1.05rem, 1.7vw, 1.3rem);
-      color:#454545;
-      margin:0 0 30px;
-    }
-    .buttons { display:flex; flex-wrap:wrap; gap:12px; }
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center;
-      min-height:48px; padding:0 19px; border-radius:999px;
-      border:1px solid var(--text); font-weight:700; font-size:.92rem;
-    }
-    .btn.primary { background:var(--text); color:white; }
-    .btn:hover { transform:translateY(-1px); }
-    .hero-card {
-      background:var(--surface);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      box-shadow:0 12px 40px rgba(0,0,0,.05);
-    }
-    .hero-card .big { font-size:3rem; font-weight:800; letter-spacing:-.06em; }
-    .hero-card p { font-size:.92rem; color:var(--muted); margin:3px 0 20px; }
-    .mini-list { border-top:1px solid var(--line); }
-    .mini-list div { padding:12px 0; border-bottom:1px solid var(--line); font-size:.9rem; }
-    .mini-list strong { display:block; }
-
-    section { padding:78px 0; border-top:1px solid var(--line); }
-    .section-head {
-      display:grid; grid-template-columns:.5fr 1.5fr; gap:40px; margin-bottom:42px;
-    }
-    .kicker { font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; font-weight:800; color:var(--muted); }
-    h2 { margin:0; font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-.055em; line-height:1; }
-    .lead { color:#555; max-width:760px; margin:16px 0 0; font-size:1.05rem; }
-
-    .skills {
-      display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
-    }
-    .skill {
-      background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:19px;
-      min-height:105px;
-    }
-    .skill strong { display:block; margin-bottom:8px; }
-    .skill span { color:var(--muted); font-size:.9rem; }
-
-    .timeline { display:grid; gap:16px; }
-    .role {
-      background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-      padding:28px; display:grid; grid-template-columns:210px 1fr; gap:30px;
-    }
-    .role-meta { color:var(--muted); font-size:.9rem; }
-    .role-meta strong { color:var(--text); display:block; font-size:1rem; margin-bottom:4px; }
-    .role h3 { margin:0 0 4px; font-size:1.35rem; letter-spacing:-.025em; }
-    .project { margin-top:20px; }
-    .project:first-child { margin-top:0; }
-    .project-title { font-weight:800; }
-    ul { margin:9px 0 0; padding-left:20px; }
-    li { margin:5px 0; }
-    .tag {
-      display:inline-block; padding:4px 9px; border-radius:999px; background:var(--soft);
-      font-size:.76rem; font-weight:700; margin:7px 5px 0 0;
-    }
-
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; }
-    .card h3 { margin-top:0; letter-spacing:-.02em; }
-    .card p { color:#555; }
-    .facts { display:grid; gap:11px; }
-    .fact { display:flex; justify-content:space-between; gap:20px; border-bottom:1px solid var(--line); padding-bottom:10px; }
-    .fact span:first-child { color:var(--muted); }
-
-    .fit {
-      display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
-    }
-    .fit-item { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; }
-    .fit-item b { display:block; margin-bottom:6px; }
-    .fit-item span { color:var(--muted); font-size:.9rem; }
-
-    .contact {
-      background:var(--text); color:white; border-radius:24px; padding:45px;
-      display:grid; grid-template-columns:1.4fr .6fr; gap:40px; align-items:end;
-    }
-    .contact h2 { color:white; }
-    .contact p { color:#c9c9c9; }
-    .contact-links { display:grid; gap:10px; }
-    .contact-links a { padding:12px 0; border-bottom:1px solid #444; }
-    .contact-links a:hover { color:#ccc; }
-
-    footer { padding:30px 0 50px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; gap:20px; }
-
-    @media (max-width: 820px) {
-      .navlinks { display:none; }
-      .hero { grid-template-columns:1fr; gap:35px; padding-top:65px; min-height:auto; }
-      .section-head, .role, .contact { grid-template-columns:1fr; gap:18px; }
-      .skills { grid-template-columns:1fr 1fr; }
-      .two-col, .fit { grid-template-columns:1fr; }
-    }
-    @media (max-width: 520px) {
-      .wrap { width:min(calc(100% - 28px), var(--max)); }
-      header { padding:18px 0; }
-      h1 { font-size:3.35rem; }
-      section { padding:58px 0; }
-      .skills { grid-template-columns:1fr; }
-      .role, .card, .hero-card, .contact { padding:22px; }
-      .contact { border-radius:18px; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Andriy Ryabtsev — Manual QA Engineer. Web and mobile testing, API testing, SQL, test design, Jira, TestRail and AI/ML fundamentals.">
+<meta property="og:title" content="Andriy Ryabtsev — Manual QA Engineer">
+<meta property="og:description" content="From complex industrial projects to software quality.">
+<title>Andriy Ryabtsev — Manual QA Engineer</title>
+<style>
+:root{--bg:#f7f7f4;--surface:#fff;--text:#171717;--muted:#686868;--line:#deded8;--soft:#ecece7;--max:1120px;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}a{color:inherit;text-decoration:none}.wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+header{padding:24px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(247,247,244,.9);backdrop-filter:blur(12px);z-index:20}nav{display:flex;justify-content:space-between;align-items:center;gap:24px}.brand{font-weight:800;letter-spacing:-.03em}.navlinks{display:flex;gap:22px;color:var(--muted);font-size:.92rem}.navlinks a:hover{color:var(--text)}
+main{padding-bottom:80px}.profile{padding:34px 0 0}.cover-shell{position:relative}.cover{height:430px;border-radius:24px;overflow:hidden;border:1px solid #d7d7d2;background:#0b2137;position:relative;box-shadow:0 18px 50px rgba(0,0,0,.08)}.cover img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}.cover-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,15,28,.02),rgba(4,15,28,0) 45%,rgba(4,15,28,.10));pointer-events:none}.profile-photo{position:absolute;left:42px;bottom:-92px;width:184px;height:184px;border-radius:50%;object-fit:cover;object-position:center 18%;border:8px solid var(--bg);box-shadow:0 10px 30px rgba(0,0,0,.22);background:#fff}.profile-info{padding:112px 28px 35px 255px;display:flex;justify-content:space-between;gap:40px;align-items:end}.profile-info h1{font-size:clamp(2.3rem,5vw,4.1rem);line-height:.95;letter-spacing:-.065em;margin:0 0 9px}.roleline{font-size:1.15rem;font-weight:750}.meta{color:var(--muted);margin-top:5px;font-size:.92rem}.profile-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:0 17px;border-radius:999px;border:1px solid var(--text);font-weight:700;font-size:.88rem}.btn.primary{background:var(--text);color:#fff}.btn:hover{transform:translateY(-1px)}
+.hero{display:grid;grid-template-columns:1.45fr .75fr;gap:70px;align-items:center;padding:45px 0 75px;border-top:1px solid var(--line)}.eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:800;margin-bottom:18px}.dot{width:8px;height:8px;background:#171717;border-radius:50%;display:inline-block}.hero h2{font-size:clamp(2.6rem,6vw,5.5rem);line-height:.92;letter-spacing:-.075em;margin:0 0 25px;max-width:820px}.hero p{max-width:720px;font-size:clamp(1.05rem,1.7vw,1.25rem);color:#454545;margin:0}.hero-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:0 12px 40px rgba(0,0,0,.05)}.hero-card .big{font-size:3rem;font-weight:800;letter-spacing:-.06em}.hero-card p{font-size:.92rem;color:var(--muted);margin:3px 0 20px}.mini-list{border-top:1px solid var(--line)}.mini-list div{padding:12px 0;border-bottom:1px solid var(--line);font-size:.9rem}.mini-list strong{display:block}
+section{padding:78px 0;border-top:1px solid var(--line)}.section-head{display:grid;grid-template-columns:.5fr 1.5fr;gap:40px;margin-bottom:42px}.kicker{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--muted)}h2{margin:0;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.055em;line-height:1}.lead{color:#555;max-width:760px;margin:16px 0 0;font-size:1.05rem}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.skill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:19px;min-height:105px}.skill strong{display:block;margin-bottom:8px}.skill span{color:var(--muted);font-size:.9rem}
+.timeline{display:grid;gap:16px}.role{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:210px 1fr;gap:30px}.role-meta{color:var(--muted);font-size:.9rem}.role-meta strong{color:var(--text);display:block;font-size:1rem;margin-bottom:4px}.role h3{margin:0 0 4px;font-size:1.35rem;letter-spacing:-.025em}.project{margin-top:20px}.project:first-child{margin-top:0}.project-title{font-weight:800}ul{margin:9px 0 0;padding-left:20px}li{margin:5px 0}.tag{display:inline-block;padding:4px 9px;border-radius:999px;background:var(--soft);font-size:.76rem;font-weight:700;margin:7px 5px 0 0}
+.fit{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.fit-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}.fit-item b{display:block;margin-bottom:6px}.fit-item span{color:var(--muted);font-size:.9rem}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}.card h3{margin-top:0}.card p{color:#555}.facts{display:grid;gap:11px}.fact{display:flex;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:10px}.fact span:first-child{color:var(--muted)}
+.contact{background:var(--text);color:#fff;border-radius:24px;padding:45px;display:grid;grid-template-columns:1.4fr .6fr;gap:40px;align-items:end}.contact h2{color:#fff}.contact p{color:#c9c9c9}.contact-links{display:grid;gap:10px}.contact-links a{padding:12px 0;border-bottom:1px solid #444}.contact-links a:hover{color:#ccc}footer{padding:30px 0 50px;color:var(--muted);font-size:.82rem;display:flex;justify-content:space-between;gap:20px}
+@media(max-width:820px){.navlinks{display:none}.cover{height:310px;border-radius:18px}.profile-photo{left:24px;bottom:-70px;width:145px;height:145px;border-width:6px}.profile-info{padding:88px 5px 30px;display:block}.profile-info h1{font-size:2.8rem}.profile-actions{margin-top:18px}.hero{grid-template-columns:1fr;gap:35px;padding-top:55px}.section-head,.role,.contact{grid-template-columns:1fr;gap:18px}.skills{grid-template-columns:1fr 1fr}.two-col,.fit{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{width:min(calc(100% - 28px),var(--max))}.profile{padding-top:20px}.cover{height:220px;border-radius:15px}.cover img{object-position:53% center}.profile-photo{left:16px;bottom:-57px;width:118px;height:118px;border-width:5px}.profile-info{padding-top:72px}.profile-info h1{font-size:2.45rem}.skills{grid-template-columns:1fr}section{padding:58px 0}.role,.card,.hero-card,.contact{padding:22px}.contact{border-radius:18px}.hero h2{font-size:3.2rem}}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <nav>
-      <a class="brand" href="#">Andriy Ryabtsev / Manual QA Engineer</a>
-      <div class="navlinks">
-        <a href="#fit">Why me</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-</header>
+<header><div class="wrap"><nav><a class="brand" href="#">AR / QA</a><div class="navlinks"><a href="#fit">Why me</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav></div></header>
+<main><div class="wrap">
+<section class="profile" style="border-top:0">
+<div class="cover-shell"><div class="cover"><img src="cover-concept.png" alt="Transition from industrial paper machinery to the digital technology world"><div class="cover-shade"></div></div><img class="profile-photo" src="profile-photo.png" alt="Portrait of Andriy Ryabtsev"></div>
+<div class="profile-info"><div><h1>Andriy Ryabtsev</h1><div class="roleline">Manual QA Engineer</div><div class="meta">Odesa, Ukraine · Remote · English C1</div></div><div class="profile-actions"><a class="btn primary" href="#contact">Get in touch</a><a class="btn" href="QA-CV-Andriy-Ryabtsev.pdf" target="_blank" rel="noopener">View CV</a></div></div>
+</section>
 
-<main>
-  <div class="wrap">
-    <section class="hero" style="border-top:0;">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Manual QA Engineer · Odesa · Remote</div>
-        <h1>Quality is not just finding bugs.</h1>
-        <p>
-          I am a Manual QA Engineer with experience testing web and mobile applications,
-          API testing, SQL/database validation, test design and defect tracking — backed by
-          a technical and customer-facing background in complex international projects.
-        </p>
-        <div class="buttons">
-          <a class="btn primary" href="#contact">Get in touch</a>
-          <a class="btn" href="QA-CV-Andriy-Ryabtsev.pdf" target="_blank" rel="noopener">View CV</a>
-        </div>
-      </div>
-      <aside class="hero-card">
-        <div class="big">€70M+</div>
-        <p>projects generated in international paper-industry sales</p>
-        <div class="mini-list">
-          <div><strong>QA</strong>Web & mobile · functional · regression · exploratory</div>
-          <div><strong>Technical</strong>Postman · SQL · DBeaver · DevTools · Git · Playwright basics</div>
-          <div><strong>AI</strong>AI/ML fundamentals · vector semantics · transformers · structured prompting</div>
-          <div><strong>Communication</strong>C1 English · international stakeholders · remote work</div>
-        </div>
-      </aside>
-    </section>
+<section class="hero"><div><div class="eyebrow"><span class="dot"></span> From complex systems to software quality</div><h2>Quality is not just finding bugs.</h2><p>I am a Manual QA Engineer with experience testing web and mobile applications, API testing, SQL/database validation, test design and defect tracking — backed by a technical and customer-facing background in complex international projects.</p></div><aside class="hero-card"><div class="big">€70M+</div><p>successful paper-industry projects</p><div class="mini-list"><div><strong>QA</strong>Web & mobile · functional · regression · exploratory</div><div><strong>Technical</strong>Postman · SQL · DBeaver · DevTools · Git · Playwright basics</div><div><strong>AI</strong>AI/ML fundamentals · vector semantics · transformers · structured prompting</div><div><strong>Communication</strong>C1 English · international stakeholders · remote work</div></div></aside></section>
 
-    <section id="fit">
-      <div class="section-head">
-        <div class="kicker">01 / Why Halo Lab</div>
-        <div>
-          <h2>A QA mindset that goes beyond clicking through scenarios.</h2>
-          <p class="lead">
-            Halo Lab describes QA as the person who understands the product, protects the quality bar
-            and prevents broken work from reaching the user. That is the part of QA I want to develop further.
-          </p>
-        </div>
-      </div>
-      <div class="fit">
-        <div class="fit-item"><b>Product understanding</b><span>Requirements analysis, decomposition, role-based flows and traceability — not just executing predefined steps.</span></div>
-        <div class="fit-item"><b>Quality before release</b><span>Functional, smoke and regression testing, with practical factory/customer acceptance-testing experience from complex projects.</span></div>
-        <div class="fit-item"><b>AI as a working tool</b><span>AI/ML fundamentals and structured prompting, with a pragmatic focus on where AI can actually improve QA work.</span></div>
-        <div class="fit-item"><b>English & stakeholders</b><span>C1 English and extensive international communication with customers, engineers and other stakeholders.</span></div>
-        <div class="fit-item"><b>Technical foundation</b><span>HTML/CSS, HTTP/JSON, REST APIs, SQL, Git/GitHub, Chrome DevTools, Postman and Playwright basics.</span></div>
-        <div class="fit-item"><b>Remote collaboration</b><span>Extensive remote work as both an independent contributor and team leader.</span></div>
-      </div>
-    </section>
+<section id="fit"><div class="section-head"><div class="kicker">01 / Why Halo Lab</div><div><h2>A QA mindset that goes beyond clicking through scenarios.</h2><p class="lead">Halo Lab describes QA as the person who understands the product, protects the quality bar and prevents broken work from reaching the user. That is the part of QA I want to develop further.</p></div></div><div class="fit">
+<div class="fit-item"><b>Product understanding</b><span>Requirements analysis, decomposition, role-based flows and traceability — not just executing predefined steps.</span></div>
+<div class="fit-item"><b>Quality before release</b><span>Functional, smoke and regression testing, with practical factory/customer acceptance-testing experience from complex projects.</span></div>
+<div class="fit-item"><b>AI as a working tool</b><span>AI/ML fundamentals and structured prompting, with a pragmatic focus on where AI can actually improve QA work.</span></div>
+<div class="fit-item"><b>English & stakeholders</b><span>C1 English and extensive international communication with customers, engineers and other stakeholders.</span></div>
+<div class="fit-item"><b>Technical foundation</b><span>HTML/CSS, HTTP/JSON, REST APIs, SQL, Git/GitHub, Chrome DevTools, Postman and Playwright basics.</span></div>
+<div class="fit-item"><b>Remote collaboration</b><span>Extensive remote work as both an independent contributor and team leader.</span></div>
+</div></section>
 
-    <section id="experience">
-      <div class="section-head">
-        <div class="kicker">02 / Experience</div>
-        <div>
-          <h2>QA experience, supported by a technical business background.</h2>
-          <p class="lead">Current QA work covers several different product types and testing contexts.</p>
-        </div>
-      </div>
-      <div class="timeline">
-        <article class="role">
-          <div class="role-meta"><strong>Software Tester</strong>2025 — Present</div>
-          <div>
-            <h3>Huntd.tech</h3>
-            <div class="tag">Web</div><div class="tag">Mobile</div><div class="tag">Marketplace</div>
-            <div class="project">
-              <div class="project-title">Two-sided talent marketplace</div>
-              <ul>
-                <li>Functional, smoke and regression testing of web and mobile applications.</li>
-                <li>Testing role-based user flows and permissions for recruiter and candidate roles.</li>
-                <li>Creating Permission Table and Requirements Traceability Matrix.</li>
-                <li>Developing decomposition and structured test-case suites using test-design techniques.</li>
-                <li>Executing test runs in TestRail and reporting/tracking bugs in Jira.</li>
-                <li>Creating test reports.</li>
-              </ul>
-            </div>
-            <div class="project">
-              <div class="project-title">IMDb & Evernote mobile apps</div>
-              <ul>
-                <li>Developing and executing test cases using Android Studio.</li>
-                <li>Reporting bugs in Jira.</li>
-              </ul>
-            </div>
-            <div class="project">
-              <div class="project-title">Conduit — multi-tenant digital publishing platform</div>
-              <ul>
-                <li>Reviewing requirements with the Product Owner during story refinement.</li>
-                <li>Developing decomposition and reporting/tracking bugs in Jira.</li>
-                <li>Testing API integration using Postman.</li>
-              </ul>
-            </div>
-            <div class="project">
-              <div class="project-title">JPetStore Demo — e-commerce web application</div>
-              <ul>
-                <li>Developing and executing test cases and reporting bugs.</li>
-              </ul>
-            </div>
-          </div>
-        </article>
+<section id="experience"><div class="section-head"><div class="kicker">02 / Experience</div><div><h2>QA experience, supported by a technical business background.</h2><p class="lead">Current QA work covers several different product types and testing contexts.</p></div></div><div class="timeline">
+<article class="role"><div class="role-meta"><strong>Software Tester</strong>2025 — Present</div><div><h3>Huntd.tech</h3><div class="tag">Web</div><div class="tag">Mobile</div><div class="tag">Marketplace</div>
+<div class="project"><div class="project-title">Two-sided talent marketplace</div><ul><li>Functional, smoke and regression testing of web and mobile applications.</li><li>Testing role-based user flows and permissions for recruiter and candidate roles.</li><li>Creating Permission Table and Requirements Traceability Matrix.</li><li>Developing decomposition and structured test-case suites using test-design techniques.</li><li>Executing test runs in TestRail and reporting/tracking bugs in Jira.</li><li>Creating test reports.</li></ul></div>
+<div class="project"><div class="project-title">IMDb & Evernote mobile apps</div><ul><li>Developing and executing test cases using Android Studio.</li><li>Reporting bugs in Jira.</li></ul></div>
+<div class="project"><div class="project-title">Conduit — multi-tenant digital publishing platform</div><ul><li>Reviewing requirements with the Product Owner during story refinement.</li><li>Developing decomposition and reporting/tracking bugs in Jira.</li><li>Testing API integration using Postman.</li></ul></div>
+<div class="project"><div class="project-title">JPetStore Demo — e-commerce web application</div><ul><li>Developing and executing test cases and reporting bugs.</li></ul></div></div></article>
+<article class="role"><div class="role-meta"><strong>Commercial Agent</strong>2005 — 2022</div><div><h3>Impex Continental SRL</h3><p style="color:#555">Represented specialized paper-industry equipment manufacturers across Ukraine, the Baltic States, Russia and other FSU markets.</p><ul><li>Found new customers, built relationships and closed deals for complex industrial projects.</li><li>Analyzed customer requirements and coordinated technical solutions with international engineering teams.</li><li>Coordinated complex projects from technical requirements and documentation through factory acceptance testing and customer acceptance.</li><li>Communicated with customers, manufacturers, engineers and other stakeholders to resolve technical issues throughout the project lifecycle.</li><li>Built and maintained internal business infrastructure including CRM, cloud storage and corporate email.</li></ul></div></article>
+</div></section>
 
-        <article class="role">
-          <div class="role-meta"><strong>Commercial Agent</strong>2005 — 2022</div>
-          <div>
-            <h3>Impex Continental SRL</h3>
-            <p style="color:#555;">Represented specialized paper-industry equipment manufacturers across Ukraine, the Baltic States, Russia and other FSU markets.</p>
-            <ul>
-              <li>Found new customers, built relationships and closed deals for complex industrial projects.</li>
-              <li>Analyzed customer requirements and coordinated technical solutions with international engineering teams.</li>
-              <li>Coordinated complex projects from technical requirements and documentation through factory acceptance testing and customer acceptance.</li>
-              <li>Communicated with customers, manufacturers, engineers and other stakeholders to resolve technical issues throughout the project lifecycle.</li>
-              <li>Built and maintained internal business infrastructure including CRM, cloud storage and corporate email.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
+<section id="skills"><div class="section-head"><div class="kicker">03 / Toolkit</div><div><h2>The stack I can work with today.</h2></div></div><div class="skills">
+<div class="skill"><strong>Testing</strong><span>Manual web/mobile · functional · regression · smoke · sanity · exploratory · ad hoc · UAT</span></div>
+<div class="skill"><strong>Test design</strong><span>Equivalence partitioning · boundary value analysis · state transition · decision tables · pairwise</span></div>
+<div class="skill"><strong>Documentation</strong><span>Test cases · checklists · test plans · bug reports · RTM · permission tables · test reports</span></div>
+<div class="skill"><strong>API & data</strong><span>Postman · RESTful API · SQL · DBeaver · HTTP/JSON · XML</span></div>
+<div class="skill"><strong>Web & mobile</strong><span>HTML/CSS · Chrome DevTools · Android Studio · Windows/Linux/iOS/Android</span></div>
+<div class="skill"><strong>Tools</strong><span>Jira · TestRail · Postman · DBeaver · Git/GitHub · Android Studio · Figma basics · Playwright basics</span></div>
+<div class="skill"><strong>Process</strong><span>SDLC · STLC · Bug Life Cycle · Agile · Scrum · Kanban · CI/CD</span></div>
+<div class="skill"><strong>AI / ML</strong><span>Vector semantics · transformer architecture · self-attention · RLHF · structured prompting</span></div>
+<div class="skill"><strong>Languages</strong><span>English C1 · Ukrainian native</span></div>
+</div></section>
 
-    <section id="skills">
-      <div class="section-head">
-        <div class="kicker">03 / Toolkit</div>
-        <div>
-          <h2>The stack I can work with today.</h2>
-        </div>
-      </div>
-      <div class="skills">
-        <div class="skill"><strong>Testing</strong><span>Manual web/mobile · functional · regression · smoke · sanity · exploratory · ad hoc · UAT</span></div>
-        <div class="skill"><strong>Test design</strong><span>Equivalence partitioning · boundary value analysis · state transition · decision tables · pairwise</span></div>
-        <div class="skill"><strong>Documentation</strong><span>Test cases · checklists · test plans · bug reports · RTM · permission tables · test reports</span></div>
-        <div class="skill"><strong>API & data</strong><span>Postman · RESTful API · SQL · DBeaver · HTTP/JSON · XML</span></div>
-        <div class="skill"><strong>Web & mobile</strong><span>HTML/CSS · Chrome DevTools · Android Studio · Windows/Linux/iOS/Android</span></div>
-        <div class="skill"><strong>Tools</strong><span>Jira · TestRail · Git/GitHub · Figma basics · JavaScript basics · Playwright basics</span></div>
-        <div class="skill"><strong>Process</strong><span>SDLC · STLC · Bug Life Cycle · Agile · Scrum · Kanban · CI/CD</span></div>
-        <div class="skill"><strong>AI / ML</strong><span>Vector semantics · transformer architecture · self-attention · RLHF · structured prompting</span></div>
-        <div class="skill"><strong>Languages</strong><span>English C1 · Ukrainian native</span></div>
-      </div>
-    </section>
+<section><div class="section-head"><div class="kicker">04 / Background</div><div><h2>Technical thinking from a different domain.</h2></div></div><div class="two-col">
+<div class="card"><h3>Education</h3><div class="facts"><div class="fact"><span>Degree</span><strong>Applied Mathematics & Engineering</strong></div><div class="fact"><span>University</span><strong>Kharkiv Polytechnic Institute</strong></div><div class="fact"><span>QA</span><strong>Mate Academy</strong></div><div class="fact"><span>BA</span><strong>EPAM Business Analysis Fundamentals</strong></div></div></div>
+<div class="card"><h3>Additional learning</h3><p>Self-directed study of AI/ML fundamentals, vector semantics, transformer architecture, self-attention, RLHF and structured prompting.</p><p>Currently interested in developing further in software testing, automation and AI-assisted QA.</p></div>
+</div></section>
 
-    <section>
-      <div class="section-head">
-        <div class="kicker">04 / Background</div>
-        <div><h2>Technical thinking from a different domain.</h2></div>
-      </div>
-      <div class="two-col">
-        <div class="card">
-          <h3>Education</h3>
-          <div class="facts">
-            <div class="fact"><span>Degree</span><strong>Applied Mathematics & Engineering</strong></div>
-            <div class="fact"><span>University</span><strong>Kharkiv Polytechnic Institute</strong></div>
-            <div class="fact"><span>QA</span><strong>Mate Academy</strong></div>
-            <div class="fact"><span>BA</span><strong>EPAM Business Analysis Fundamentals</strong></div>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Additional learning</h3>
-          <p>Self-directed study of AI/ML fundamentals, vector semantics, transformer architecture, self-attention, RLHF and structured prompting.</p>
-          <p>Currently interested in developing further in software testing, automation and AI-assisted QA.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="contact">
-        <div>
-          <div class="kicker" style="color:#aaa;">05 / Contact</div>
-          <h2>Let’s talk about quality.</h2>
-          <p>I am looking for a Junior/Manual QA opportunity where I can contribute immediately and continue growing in automation and AI-assisted testing.</p>
-        </div>
-        <div class="contact-links">
-          <a href="mailto:andriy@ryabtsev.onmicrosoft.com">andriy@ryabtsev.onmicrosoft.com ↗</a>
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="https://t.me/" target="_blank" rel="noopener">Telegram ↗</a>
-          <a href="QA-CV-Andriy-Ryabtsev.pdf" target="_blank" rel="noopener">PDF CV ↗</a>
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer class="wrap">
-  <span>Andriy Ryabtsev · Manual QA Engineer</span>
-  <span>Single-page resume · 2026</span>
-</footer>
-</body>
-</html>
+<section id="contact"><div class="contact"><div><div class="kicker" style="color:#aaa">05 / Contact</div><h2>Let’s talk about quality.</h2><p>I am looking for a Junior/Manual QA opportunity where I can contribute immediately and continue growing in automation and AI-assisted testing.</p></div><div class="contact-links"><a href="mailto:andriy@ryabtsev.onmicrosoft.com">andriy@ryabtsev.onmicrosoft.com ↗</a><a href="#" aria-label="LinkedIn placeholder">LinkedIn ↗</a><a href="#" aria-label="Telegram placeholder">Telegram ↗</a><a href="QA-CV-Andriy-Ryabtsev.pdf" target="_blank" rel="noopener">PDF CV ↗</a></div></div></section>
+</div></main>
+<footer class="wrap"><span>Andriy Ryabtsev · Manual QA Engineer</span><span>Single-page resume · 2026</span></footer>
+</body></html>
