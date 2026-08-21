@@ -1,12 +1,11 @@
-# Andriy Ryabtsev — Resume Website v2
+# Andriy Ryabtsev — Resume Website
 
-This version keeps the Version 1 visual language and adds the profile/cover header.
+Facebook-style profile header added to the previous single-page resume:
+- cover image
+- overlapping circular profile photo
+- profile name/title/location
+- Contact / View CV buttons
+- profile navigation tabs
+- responsive behavior for mobile
 
-Files:
-- index.html
-- cover-concept.png
-- profile-photo.png
-- QA-CV-Andriy-Ryabtsev.pdf
-
-Before publishing, replace the placeholder LinkedIn and Telegram href values in index.html.
-No build step is required.
+Replace the placeholder LinkedIn and Telegram URLs in `index.html` before publishing.
